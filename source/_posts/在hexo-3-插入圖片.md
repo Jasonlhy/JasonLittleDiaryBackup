@@ -1,6 +1,7 @@
 title: 在hexo 3 插入圖片
 date: 2015-10-20 05:33:40
 description: 在hexo 3 利用asset folder 插入圖片遇到的問題
+categories: 經驗分享
 tags:
 - hexo
 ---

@@ -1,6 +1,7 @@
 title: pacman首頁顯示混亂
 date: 2015-10-20 04:45:28
 description: 程式碼在pacman 主題首頁下顯示為一堆不明數字
+categories: 經驗分享
 tags:
 - hexo
 - pacman
