@@ -80,7 +80,7 @@ sitemap:
 
 # Hexo backup
 backup:
-    type: git
-    theme: pacman
-    repository:
-       github: git@github.com:Jasonlhy/JasonLittleDiaryBackup.git,master
+	type: git
+	theme: pacman
+	repository:
+	   github: git@github.com:Jasonlhy/JasonLittleDiaryBackup.git,master
