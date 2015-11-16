@@ -1,9 +1,9 @@
 title: 在hexo 3 插入圖片
 date: 2015-10-20 05:33:40
 description: 在hexo 3 利用asset folder 插入圖片遇到的問題
-categories: 經驗分享
+categories: Problem
 tags:
-- hexo
+- Hexo
 ---
 
 # 首先條件
@@ -19,7 +19,7 @@ hexo 3 支持asset folder
 {% asset_img 'source.png' %}
 ```
 
------- 
+------
 
 # 遇到的問題
 [官方文件](https://hexo.io/docs/asset-folders.html)有少許誤導，post_asset_folder 作用為開新post 時自動開同名folder

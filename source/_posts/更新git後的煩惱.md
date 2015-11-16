@@ -1,11 +1,11 @@
 title: 更新git後的煩惱
 date: 2015-10-30 05:10:45
 description: hexo-deployer-git 的奇怪問題
-categories: 經驗分享
-tags: 
-- hexo
-- nightmare
-- git
+categories: Problem
+tags:
+- Hexo
+- Nightmare
+- Git
 ---
 
 # 可惡的更新
@@ -41,7 +41,7 @@ else
 fi
 
 # Upload to the server
-git add . 
+git add .
 git commit -m "$msg"
 git push -u "$repo" "master:master" --force
 {% endcodeblock %}
@@ -54,7 +54,7 @@ git push -u "$repo" "master:master" --force
 
 # 最後解決方法
 
-根據[這位大神](http://stackoverflow.com/questions/2643502/git-permission-denied-publickey)的回覆，這個問題是由public key authetication 引起，而原因是上載到server 的public key 內的email 和git global config 的email 不同。這是什麼錯誤訊息orz... 
+根據[這位大神](http://stackoverflow.com/questions/2643502/git-permission-denied-publickey)的回覆，這個問題是由public key authetication 引起，而原因是上載到server 的public key 內的email 和git global config 的email 不同。這是什麼錯誤訊息orz...
 
 
 只需設定global username 同global email (切記要和public key 內的email 相同)

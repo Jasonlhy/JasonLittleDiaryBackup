@@ -1,11 +1,11 @@
 title: Ruby筆記
 date: 2015-10-23 03:04:13
 description: 關於Ruby 基本的筆記
-categories: 筆記
+categories: Note
 tags:
 - Ruby
 - Programming
-- Note
+- Slide
 ---
 
 以前Ruby 1.9 年代的筆記，以英語寫成。
