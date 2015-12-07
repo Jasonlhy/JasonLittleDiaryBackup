@@ -163,4 +163,10 @@ $(document).ready(function(){
 }); 
 </script>
 <% } %>
+
 <%- partial('google_analytics') %>
+
+<% if (page.cytoscape) { %>
+	<%- js('js/cytoscape.js') %>
+<% } %>
+
