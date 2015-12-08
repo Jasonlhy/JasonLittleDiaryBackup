@@ -6,7 +6,7 @@ tags:
 - Hexo
 ---
 
-# 首先條件
+# 首要條件
 hexo 3 支持asset folder
 只要把圖片放左post同層的同名字folder, 然用利用asset_img 就能連結到圖片。
 
