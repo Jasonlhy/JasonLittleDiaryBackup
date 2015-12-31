@@ -4,7 +4,7 @@
     color color-label 
     &:hover
       color color-theme
-
+  
 article
   header.article-info
     @media mini
@@ -55,8 +55,12 @@ article
       text-shadow 0 1px 0 color-white
       line-height line-height
       white-space nowrap
-    h1,h2
-      font-size font-size+80
+    h1
+      font-size font-size+100
+      font-weight bold
+      line-height 1.2em
+    h2
+      font-size font-size+60
       line-height 1.2em
     h3,h4,h5,h6
       font-size font-size+40
@@ -147,9 +151,10 @@ article
         height 100%
         margin-top 0
     table
-      width 100%
+      width 80%
       border-collapse collapse
       border-spacing 0
+      margin-left 10%
       th
         font-weight bold
         border-bottom 3px solid lighten(color-gray,30%)
@@ -170,3 +175,8 @@ article
       margin-right 0.5em
       margin-left 1em
       float right
+    pre.sample
+      background none
+      color rgb(68,108,179)
+      line-height 1.2
+      border 1px solid black

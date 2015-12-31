@@ -1,10 +1,10 @@
 title: KMP algorithm
 date: 2015-12-07 03:04:32
 description:
-categories: Code
+categories: Algorithm
 tags:
-- Algorithm
-- Sorting
+- Code
+- Dynamic Programming
 ---
 
 KMP algorithm is a classic algorithm to search a pattern inside a text. I perosnally think this algorithm is diffiuclt to understand, it's simple but quite abstract.
@@ -12,7 +12,7 @@ KMP algorithm is a classic algorithm to search a pattern inside a text. I perosn
 # Naive Approach
 At each character of text, compare with pattern letter by letter from its begining. When a mismatch is found, move the character position by one and start all over again.
 
-Running time: O(n * k)
+Running time: `O(n * k)`
 where n is the length of text, k is the length of pattern
 
 {% codeblock lang:cpp %}
@@ -45,12 +45,12 @@ int contain(char *t, char *p){
 
 # KMP Algorithm
 
-## Search principle
+## Searching principle
 It looks a little bit magic. When a mismatch is found, the words itself tell you where you should restart you comparsion and keep the text position. Instead of movining the character position in text one by one, it can move much more quickly and without repeating to compare those character in texts which are proved to be matched. The letters before the mismtached character in the pattern could be possiblily matched with previous characters in the text.
 
-When a mismatch is found at [i + 1] character, the letters from [1...i] are already matched. Suffix of [1...i] could be also a prefix of [1...i]. Suffix itself is matched, but its next character is not matched. When Suffix is equal to prefix, it can act likes a prefix, how about trying the next character after the prefix? You only need to roll back the comparsion at the character just behind the prefix. 
+When a mismatch is found at `[i + 1]` character, the letters from `[1...i]` are already matched. Suffix of `[1...i]` could be also a prefix of `[1...i]`. Suffix itself is matched, but its next character is not matched. When Suffix is equal to prefix, it can act likes a prefix, how about trying the next character after the prefix? You only need to roll back the comparsion at the character just behind the prefix. 
 
-[Prefix][t]...[Suffix][m]
+`[Prefix][t]...[Suffix][m]`
 m is wrong, let's try t
 
 ----
@@ -58,15 +58,14 @@ m is wrong, let's try t
 Considering the following example, ababc is the pattern, ababababc is the text. And i is the text pointer, j is the pattern pointer. 
 
 **Step 1:**
-<pre>
+Start at the begining, when a match is found, keep moving both pointers.
+<pre class="sample">
 i
 ababababc
 j
 ababc
 </pre>
-
-Start at the begining, when a match is found, keep moving both pointers.
-<pre>
+<pre class="sample">
     i
 ababababc
     j
@@ -74,8 +73,8 @@ ababc
 </pre>
 
 **Step 2:**
-Look at the above figure, a mistached is found at the 5-th character, a and c. i stays at that position, the letters befroe c is "abab", its longest suffix and prefix is "ab", so we need to rollback j to character just behind "ab", which is a. You can now see that the eariler suffix: "ab" acts like prefix now
-<pre>
+Look at the above figure, a mistached is found at the 5-th character, a and c. `i` stays at that position, the letters befroe c is `abab`, its longest suffix and prefix is `ab`, so we need to rollback `j` to character just behind `ab`, which is `a`. You can now see that the eariler suffix: `ab` acts like prefix now
+<pre class="sample">
     i
 ababababc
     j
@@ -84,7 +83,7 @@ ababababc
 
 **Step 3:**
 Keep moving until and mismatched is found.
-<pre>
+<pre class="sample">
       i
 ababababc
       j
@@ -93,8 +92,8 @@ ababababc
 
 
 **Step 4:**  
-a and c is mismatched again. i stays at that position, the letters befroe c is "abab", its longest suffix and prefix is "ab", so we need to rollback j to character just behind "ab", which is a. You can now see that the eariler suffix: "ab" acts like prefix now
-<pre>
+Look at the above figure, a and c is mismatched again. `i` stays at that position, the letters befroe c is `abab`, its longest suffix and prefix is `ab`, so we need to rollback `j` to character just behind `ab`, which is a. You can now see that the eariler suffix: `ab` acts like prefix now
+<pre class="sample">
       i
 ababababc
       j
@@ -103,8 +102,8 @@ ababababc
 	
 
 **Step 5:**
-Keep moving until j reach the end.
-<pre>
+Keep moving until `j` reach the end.
+<pre class="sample">
         i
 ababababc
         j
@@ -115,27 +114,30 @@ ababababc
 The remaining quesition is: how can we find the the position of longest prefix which is also a suffix (LPS) ? It is done by dynamic programming. By examing the previous LPS, the letter at i-th position can get its LPS position easily. 
 
 
-Consider a pattern [1...i-1][i], can be seen as [suffix...prefix][a] where a is the mismatched character. It could probabily look like:
+Consider a pattern `[1...i-1][i]`, can be seen as `[suffix...prefix][a]` where a is the mismatched character. It could probabily look like:
 
-**Case 1: No LPS of the previous letters**
-[....no any suffix at all][a] = LPS of a = -1
+**Case 1: No LPS of previous letters**
+`[....no any suffix at all][a]` 
+=> LPS of [a] = -1
 
-**Case 2: the next character of the LPS of the previous letters equal to the mismatched letter**
-[suffix[a]..prefix][a] : LPS of [1...i-1] + 1 is equal to a ?
+**Case 2: the next character of the LPS of previous letters is equal to the mismatched letter**
+`[suffix[a]..prefix][a]` : LPS of [1...i-1] + 1 is equal to a ?
 => LPS of [a] = LPS of [1..i-1] + 1
-Example : "aabaab"
-To calculate the position of LPS of the last b, F(5), it can be viewd as [aabaa]b
-LPS of [aabaa] is "aa" with index 2, "aa" + 1 = b ? 
-YES !! therefore LPS of the last b = 2 + 1 = 3
 
-**Case 3: the next character of the LPS of the LPS... of the LPS equal to the mismatched letter**
-[su[a]fix[b]..prefix][a] : LPS of LPS...of LPS is equal to a
-=> LPS of [a] = LPS of LPS...of LPS + 1 ?
-Example: "adcaadcad"
-To calculate the position of LPS of the last c, F(8), it can be viewd as [adcaadca]d
-LPS of [adcaadca] is "adca" with index 3, "adca" + 1 = d ? 
+Example : `aabaab`
+To calculate the position of LPS of the last b, F(5), it can be viewd as `[aabaa]b`
+LPS of `[aabaa]` is `aa` with index 2, `aa` + 1 = `b` ? 
+YES !! therefore LPS of the last `b` = 2 + 1 = 3
+
+**Case 3: the next character of the LPS of the LPS... of the LPS of previous letters is equal to the mismatched letter**
+`[su[a]fix[b]..prefix][a]` : ( LPS of LPS...of LPS of [1...i-1] ) + 1 is equal to a ?
+=> LPS of [a] = ( LPS of LPS...of LPS of [1..i-1] ) + 1
+
+Example: `adcaadcad`
+To calculate the position of LPS of the last c, F(8), it can be viewd as `[adcaadca]d`
+LPS of `[adcaadca]` is `adca` with index 3, `adca` + 1 = `d` ? 
 NO !! find the LPS of the LPS recursively.
-LPS of "adca" is "a" with index 0, is "a" + 1 = d ? 
+LPS of `adca` is `a` with index 0, is `a` + 1 = `d` ? 
 YES !!! therefore F(8) = 0 + 1
 
 ## Running time analysis:
