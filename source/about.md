@@ -11,4 +11,3 @@ Some personal projects:
 - [HouseGameSolver](https://github.com/Jasonlhy/HouseGameSolver) : a small haskell program used to solve [Knight's tour](https://en.wikipedia.org/wiki/Knight%27s_tour)
 
 For more, you can checkout my [github](https://github.com/Jasonlhy).
-
