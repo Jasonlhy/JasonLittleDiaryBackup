@@ -1,6 +1,6 @@
-title: 一些javascript object筆記
+title: javascript object筆記
 date: 2016-01-27 07:20:42
-description:
+description: 記錄一些javascript object用法和注意地方
 categories:
 tags:
 ---
@@ -35,7 +35,13 @@ object.name // jason
 object.age // undefined  
 {% endcodeblock %}
 
-OR 利用`[]` (Object literal), 特別適用於有-的key
+因此可以利用undefined value 檢查某object 成員有沒有被定義
+{% codeblock %}
+object.name === undefined // false
+object.age === undefined // true
+{% endcodeblock %}
+
+也可以利用`[]` (Object literal), 適用於有-的key
 {% codeblock %}
 var object = { "my-name": "jason", "image-list" : "image.png" };
 object.image-list; // reference error: list
@@ -43,13 +49,7 @@ object.my-name; // NaN
 object["my-name"]; // jason
 {% endcodeblock %}
 
-因此可以利用undefined value 檢查某object 成員有沒有被定義
-{% codeblock %}
-object.name === undefined // false
-object.age === undefined // true
-{% endcodeblock %}
-
-但可以隋意新加成員
+Object 可以隋意新加成員
 {% codeblock lang:javascript %}
 var object = { name : "jason" };
 object.nickname = "tresa";
