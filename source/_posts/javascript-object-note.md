@@ -17,11 +17,13 @@ var object = { name : my_nickname } // my_nickanme is the defined variable
 var object = { 'name' : "jason" , 'job' : "sutdent" }   // hv ''
 var object = { name : "jason", job : "student" }     // no ''
 var object = { 名字 : "jason" }     // console.log(object.名字) -> jason
+var object = { nick_name : "jason" }     // console.log(object.nick_name) -> jason
 {% endcodeblock %}
 
 ## ✘ 定義
 {% codeblock lang:javascript %}
 var object = { my name : "jason" } // key 如有空格要''
+var object = { nick-name : "jason" } // key 如有-要''
 {% endcodeblock %}
 
 
@@ -31,6 +33,14 @@ var object = { my name : "jason" } // key 如有空格要''
 var object = { name : "jason" };
 object.name // jason
 object.age // undefined  
+{% endcodeblock %}
+
+OR 利用`[]` (Object literal), 特別適用於有-的key
+{% codeblock %}
+var object = { "my-name": "jason", "image-list" : "image.png" };
+object.image-list; // reference error: list
+object.my-name; // NaN
+object["my-name"]; // jason
 {% endcodeblock %}
 
 因此可以利用undefined value 檢查某object 成員有沒有被定義
