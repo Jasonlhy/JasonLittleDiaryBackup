@@ -169,7 +169,7 @@ val contactForm: Form[Contact] = Form(
 <input type="text" name="informations[1].phones">
 {% endcodeblock %}
 
-`primaryscl` 在html 的`name` 為mynickname.旳primaryscl
+`primaryscl` 在html 的`name` 為mynickname.primaryscl
 {% codeblock lang:html %}
 <input type="text" name="mynickname.primaryscl">
 <input type="text" name="mynickname.secondaryscl">
