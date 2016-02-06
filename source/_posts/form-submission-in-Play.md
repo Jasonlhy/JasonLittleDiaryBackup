@@ -129,6 +129,53 @@ curl -H "Content-Type:application/x-www-form-urlencoded" \
 http://localhost:9000/api/user/login2
 {% endcodeblock %}
 
+# Nested field
+可以定義一個field 作為`list` or `seq`
+但需要跟隨一定規則定義html `name` field
+
+例如在文件中
+{% codeblock lang:scala %}
+val contactForm: Form[Contact] = Form(
+
+  // Defines a mapping that will handle Contact values
+  mapping(
+    "firstname" -> nonEmptyText,
+    "lastname" -> nonEmptyText,
+    "company" -> optional(text),
+
+    // Defines a repeated mapping
+    "informations" -> seq(
+      mapping(
+        "label" -> nonEmptyText,
+        "email" -> optional(email),
+        "phones" -> list(
+          text verifying pattern("""[0-9.+]+""".r, error="A valid phone number is required")
+        )
+      ),
+      "mynickname" -> mapping(
+        "primaryscl" -> text,
+        "secondaryscl" -> text
+      )
+      (ContactInformation.apply)(ContactInformation.unapply)
+    )
+  )(Contact.apply)(Contact.unapply)
+)
+{% endcodeblock %}
+
+`phones` 在html 的`name` 需要為informations[0].phones
+{% codeblock lang:html %}
+<input type="text" name="需要為informations[0].phones">
+(省略........)
+<input type="text" name="需要為informations[1].phones">
+{% endcodeblock %}
+
+`primaryscl` 在html 的`name` 需要為mynickname.旳primaryscl
+{% codeblock lang:html %}
+<input type="text" name="mynickname.primaryscl">
+<input type="text" name="mynickname.secondaryscl">
+{% endcodeblock %}
+
+
 # Reference
 - [Introudction of algebraic data In Haskell  types](http://chris-taylor.github.io/blog/2013/02/10/the-algebra-of-algebraic-data-types/)
 - [Introduction of Extractor patern](http://danielwestheide.com/blog/2012/11/21/the-neophytes-guide-to-scala-part-1-extractors.html)
