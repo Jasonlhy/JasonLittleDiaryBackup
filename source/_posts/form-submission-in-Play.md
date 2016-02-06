@@ -162,14 +162,14 @@ val contactForm: Form[Contact] = Form(
 )
 {% endcodeblock %}
 
-`phones` 在html 的`name` 需要為informations[0].phones
+`phones` 在html 的`name` 為informations[0].phones
 {% codeblock lang:html %}
-<input type="text" name="需要為informations[0].phones">
+<input type="text" name="informations[0].phones">
 (省略........)
-<input type="text" name="需要為informations[1].phones">
+<input type="text" name="informations[1].phones">
 {% endcodeblock %}
 
-`primaryscl` 在html 的`name` 需要為mynickname.旳primaryscl
+`primaryscl` 在html 的`name` 為mynickname.旳primaryscl
 {% codeblock lang:html %}
 <input type="text" name="mynickname.primaryscl">
 <input type="text" name="mynickname.secondaryscl">
