@@ -56,7 +56,6 @@ object.nickname = "tresa";
 object.nickname; // "tresa"
 {% endcodeblock %}
 
-
 # 檢查type
 Javascript 使用String定義type
 {% codeblock %}
