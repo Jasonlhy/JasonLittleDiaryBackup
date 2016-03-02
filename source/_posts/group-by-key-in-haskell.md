@@ -32,7 +32,7 @@ Prelude Data.List> groupBy (==) [1, 1, 2, 3, 1]
 ## 解決方法1
 List 事前需要被sorted by key 
 Scala 的例子在Haskell 可以寫成這樣
-值得注意`sortBy 要求data `Ordering`, 需要用`compare`, 不是`>` `==` `<` 它們會出Bool
+值得注意`sortBy` 要求data `Ordering`, 需要用`compare`, 不是Bool結果的`>` `==` `<` 
 
 {% codeblock lang:haskell %}
 Prelude Data.List> let allInOne = groupBy (\x y -> (x `mod` 3) == (y `mod` 3)) . sortBy (\x y -> compare (x `mod` 3) (y `mod` 3))
