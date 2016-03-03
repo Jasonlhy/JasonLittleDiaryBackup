@@ -14,6 +14,7 @@ Waiting to finish
 
 ## Text
 [Compare Text](http://text-compare.com)
+[Online Latex Editor](https://www.codecogs.com/latex/eqneditor.php)
 
 ## Front End
 [CSS PreProcessor](https://csspre.com/compile/)
