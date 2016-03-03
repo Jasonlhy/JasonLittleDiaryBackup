@@ -8,14 +8,13 @@ tags:
 ---
 
 # 前言
-在很久很久以前，數學家門研究怎樣產生電腦，和研究怎樣令電腦運作
-這門的學問叫Theory of computation (真的是theory, 因為都是抽象的電腦)
-當中有兩個分支
-Automata theory: 研究機械怎樣計算
-Formal language: 研究language, language 是給automata計算的東西, 因此Formal language是一門跟Automata 很相關的科
+在很久很久以前，數學家門研究怎樣產生電腦，和研究怎樣令電腦運作, 這門的學問叫Theory of computation (真的是theory, 因為都是抽象的電腦), 當中有兩個分支:
+- Automata theory 
+  研究機械怎樣計算
+- Formal language 
+  研究language, language 是給automata計算的東西, 因此Formal language是一門跟Automata 很相關的科
 
 現在電腦中常用的[Von Neumann architecture](https://en.wikipedia.org/wiki/Von_Neumann_architecture) 是基於 Automata theory中的 [Universal Turing machine](https://en.wikipedia.org/wiki/Universal_Turing_machine)
-
 By the way, Automata和Machine在一些文章中經常互用
 
 
@@ -58,7 +57,7 @@ PS: recursive parser 是top down parser
 不用temporary memory，利用在不同state 的轉移作computation
 因此只需program memory (不同state)
 
-Deterministic finite automaton: 每個state 只會轉移到另一個state
-Nondeterministic finite automaton: 每個state 可以轉移到n 個state
+- Deterministic finite automaton: 每個state 只會轉移到另一個state
+- Nondeterministic finite automaton: 每個state 可以轉移到n 個state
 
 
