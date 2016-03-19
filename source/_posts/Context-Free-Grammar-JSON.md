@@ -1,8 +1,11 @@
 title: 'Context-Free Grammar & JSON'
 date: 2016-03-20 03:33:59
 description:
-categories:
+categories: Note
 tags:
+- Compiler Principle
+- JSON
+- Formal Language
 ---
 
 # JSON 和Context-free Grammar的關係 
@@ -54,12 +57,7 @@ public class JSONValidator {
 		return jsonString.charAt(idx);
 	}
 
-	/**
-	 * Increment the index and check the character it is the expected character
-	 * or not
-	 * 
-	 * @param expectedChar
-	 */
+
 	public void next(char expectedChar) {
 		if (peek() != expectedChar) {
 			// run time exceptions
@@ -69,9 +67,7 @@ public class JSONValidator {
 		idx++;
 	}
 
-	/**
-	 * Increment the index without checking the validity of the syntax
-	 */
+
 	public void next() {
 		idx++;
 	}
