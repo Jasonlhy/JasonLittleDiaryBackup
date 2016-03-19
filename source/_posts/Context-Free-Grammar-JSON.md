@@ -5,8 +5,8 @@ categories:
 tags:
 ---
 
-
-copy from [JSON.org](http://www.json.org)
+# JSON 和Context-free Grammar的關係 
+Copy from [JSON.org](http://www.json.org)
 <pre class="sample">
 object
   {}
@@ -32,15 +32,16 @@ value
   null
 </pre>
 
-# JSON 和Context-free Grammar的關係 
 JSON 可以由Context-free Grammar 所做成。當中的rule都是non-ambiguous，內裡的leftmost derivation, 都是deterministic (只有一個方法)。而且可以先做rule1 再做rule2。因此他是LL(1) parser, 可以用predictive parsing，用recursive decent method.
 
 每次先看看一個character 然後決定走那條rule
 下面是sample code,當中的members和elements 不用recursion那麼深... 可以用while 取代, syntax error detection 的做法參加了原作者, 一檢測到就throw exception
 
+
+
 # Sample Code
-{% codeblock %}
-class JSONValidator {
+{% codeblock lang:java %}
+public class JSONValidator {
 	private String jsonString;
 	private int idx = -1; // next scan character index
 
