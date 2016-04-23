@@ -9,7 +9,7 @@ description:
 ---
 主要分為兩種Evalulation first, or Evaluation when needed
 
-# Evalulation first
+# Evalulation Argunment first
 
 ## Call-By-Value
 最common 的做法，先計算parameter 的value，然後把value copy 進function內
@@ -69,7 +69,7 @@ after function is called: 6
 
 {% endcodeblock %}
 
-# Evaluation when needed
+# Evaluation Argunment when needed
 
 ## Call-By-Name
 用的時侯才把parameter evaluate
@@ -176,7 +176,8 @@ console.log(callByName.callAdd()); // 1
 {% endcodeblock %}
 
 ## Call-By-Need
-Call-By-Name + memory, evalution 後把結果儲起來
+Call-By-Name + memorized the evaluation result, evalute argunment 後把結果儲起來
+就算之後改變argunment也不會影響evaluation的結果
 
 ## Call-By-Text
 類似Call-By-Name ，但passing as parameter時沒有closure 裝著所需的variable
