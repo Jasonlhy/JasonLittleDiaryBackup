@@ -1,13 +1,12 @@
 title: parameter passing
-date: 2016-02-23 22:39:29
-description:
 categories:
-- Note
+  - Note
 tags:
-- Javascript
-- Programming Principle
+  - Javascript
+  - Programming Principle
+date: 2016-02-23 22:39:00
+description:
 ---
-
 主要分為兩種Evalulation first, or Evaluation when needed
 
 # Evalulation first
@@ -185,6 +184,7 @@ Call-By-Name + memory, evalution 後把結果儲起來
 
 個人認為javascript內的eval 是類似效果？
 {% codeblock lang:js %}
+
 function CallByText(){
     var array = [0, 1, 2, 3];
     var index = 0;
@@ -199,6 +199,7 @@ function CallByText(){
     }
 }
 
-var callByName = new CallByName();
-console.log(callByName.callAdd()); // 1
+var callByText = new CallByText();
+console.log(callByText.callAdd());
+
 {% endcodeblock %}
