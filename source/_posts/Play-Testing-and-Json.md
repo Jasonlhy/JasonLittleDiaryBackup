@@ -112,12 +112,14 @@ class RecipeControllerSpec extends PlaySpecification with DAOTrait{
 
 
 # JSON Read & Write
-play framework 設計JSON要read 進一個model & 或由一個model write 成JSON，如果json的數目跟model attribute不同比較麻煩
+play framework 設計JSON要read 進一個model & 或由一個model write 成JSON
+如果json的數目跟model attribute不同比較麻煩
 
 把一個value 變做object, 利用scala 的map pattern 提取value
 {% codeblock %}
 implicit val ingRead: Reads[IngIdWrap] = (JsPath \ "ingId").read[Int].map(IngIdWrap.apply);
 {% endcodeblock %}
+
 
 **Read的model attribute 比JSON value 多**
 UserRecipeRating 是(Int, Int, Int)
@@ -131,15 +133,16 @@ implicit val read : Reads[UserRecipeRating] = (
   )(applyJson)
 {% endcodeblock %}
 
+
 **Write的model attribute 比JSON value 多**
 反過來，把一個UserRecipeRating 寫兩個Int, write combinator 需要`(Int, Int)`
 可以寫一個function 接收一個UserRecipeRating 變作`(Int, Int)`
 {% codeblock %}
 val writeJson = (obj: UserRecipeRating) => (obj.recipeId , obj.rating)
-implicit val write : Reads[Write] = (
+implicit val write : Writes[Write] = (
     (JsPath \ "recipeId").write[Int] and
     (JsPath \ "rating").write[Int]
-  )((writeJson))
+  )(writeJson)
 {% endcodeblock %}
 
 # Reference
