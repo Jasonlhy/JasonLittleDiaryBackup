@@ -9,6 +9,10 @@ tags:
 ---
 
 個人覺得Play 的文件比較亂。在這裡先記下簡約play testing 的用法
+# 版本 !!!!
+十分重要, 因為各個版本的api 可以差別很大...
+- Play version: 2.4.6
+- Scala version: 2.1.0
 
 # Override configuration
 因為我只預設用一個database。。。
@@ -108,13 +112,14 @@ class RecipeControllerSpec extends PlaySpecification with DAOTrait{
 
 
 # JSON Read & Write
-play framework 設計JSON要read 進一個model & 或由一個model write 成JSON，如果json的數目不同比較麻煩
+play framework 設計JSON要read 進一個model & 或由一個model write 成JSON，如果json的數目跟model attribute不同比較麻煩
 
 把一個value 變做object, 利用scala 的map pattern 提取value
 {% codeblock %}
 implicit val ingRead: Reads[IngIdWrap] = (JsPath \ "ingId").read[Int].map(IngIdWrap.apply);
 {% endcodeblock %}
 
+**Read的model attribute 比JSON value 多**
 UserRecipeRating 是(Int, Int, Int)
 read的read combinator 會產生`(Int, Int)`
 寫一個function 接收`(Int, Int)` 變成UserRecipeRating      
@@ -126,6 +131,7 @@ implicit val read : Reads[UserRecipeRating] = (
   )(applyJson)
 {% endcodeblock %}
 
+**Write的model attribute 比JSON value 多**
 反過來，把一個UserRecipeRating 寫兩個Int, write combinator 需要`(Int, Int)`
 可以寫一個function 接收一個UserRecipeRating 變作`(Int, Int)`
 {% codeblock %}
@@ -135,4 +141,8 @@ implicit val write : Reads[Write] = (
     (JsPath \ "rating").write[Int]
   )((writeJson))
 {% endcodeblock %}
+
+# Reference
+[JSON Basic](https://www.playframework.com/documentation/2.4.x/ScalaJson#Traversing-a-JsValue-structure)
+[Helper Method](https://www.playframework.com/documentation/2.4.x/api/scala/index.html#play.api.test.Helpers$)
 
